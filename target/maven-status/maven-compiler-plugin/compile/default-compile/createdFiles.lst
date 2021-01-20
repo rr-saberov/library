@@ -1,0 +1,5 @@
+org/example/app/services/BookService.class
+org/example/web/dto/Book.class
+org/example/app/services/ProjectRepository.class
+org/example/app/services/BookRepository.class
+org/example/web/controllers/BookShelfController.class
