@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
 Built-By: ruslan
-Build-Jdk: 11.0.9
+Build-Jdk: 15.0.1
 Implementation-Title: simple_mvc Maven Webapp
 Implementation-Version: 1.0-SNAPSHOT
 Implementation-Vendor-Id: org.example

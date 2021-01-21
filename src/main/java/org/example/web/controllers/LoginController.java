@@ -30,9 +30,14 @@ public class LoginController {
         return "login_page";
     }
 
-    @PostMapping("/adduser")
-    public String addUser(String name, String password) {
+    @GetMapping("adduser")
+    public String registration(Model model) {
+        model.addAttribute("loginForm", new LoginForm());
+        return "registration_form";
+    }
 
+    @PostMapping("adduser")
+    public String addUser(String name, String password) {
         loginService.addUser(name, password);
         return "redirect:/index";
     }

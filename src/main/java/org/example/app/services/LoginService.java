@@ -23,7 +23,9 @@ public class LoginService {
     public boolean authenticate(LoginForm loginForm) {
         logger.info("try auth with user-form: " + loginForm);
         for (Map.Entry<String, String> entry : accounts.entrySet()) {
-            return entry.getKey().equals(loginForm.getUsername()) && entry.getValue().equals(loginForm.getPassword());
+            if (entry.getKey().equals(loginForm.getUsername())) {
+                return entry.getValue().equals(loginForm.getPassword());
+            }
         }
         return false;
     }
