@@ -1,8 +1,8 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://thymeleaf.org ">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
 <head>
-    <title>Registration form</title>
     <meta charset="UTF-8">
+    <title>Registration form</title>
     <style>
         #registration_form {
             position: absolute;
@@ -15,15 +15,24 @@
 
 <body>
 <div id="registration_form">
-    <form action="#" th:action="@{login/adduser}" th:object="${loginForm}" method="post">
-        <label for="name">Name</label>
-        <input type="text" th:field="*{name}" id="name" placeholder="Name">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-        <label for="password">Password</label>
-        <input type="text" th:field="*{password}" id="password" placeholder="Password">
-        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
-        <input type="submit" value="Add User">
+    <form method="post" th:action="@{/login/adduser}" th:object="${loginForm}">
+        <br>
+        <input class="login_item" type="text" placeholder="enter username" th:field="*{username}">
+        <br>
+        <input class="login_item" type="password" placeholder="password" th:field="*{password}">
+        <br>
+        <input class="login_item" type="submit" placeholder="login">
     </form>
+
+<!--    <form action="#" th:action="@{login/adduser}" th:object="${loginForm}" method="post">-->
+<!--        <label for="name">Name</label>-->
+<!--        <input type="text" th:field="*{name}" id="name" placeholder="Name">-->
+<!--        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
+<!--        <label for="password">Password</label>-->
+<!--        <input type="text" th:field="*{password}" id="password" placeholder="Password">-->
+<!--        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>-->
+<!--        <input type="submit" value="Add User">-->
+<!--    </form>-->
 </div>
 </body>
 </html>
