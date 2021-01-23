@@ -20,7 +20,7 @@ public class BookService {
     }
 
     public void saveBook(Book book) {
-        if (book.getTitle() != "" || book.getAuthor() != "")
+        if (!book.getTitle().equals("") || !book.getAuthor().equals(""))
             bookRepo.store(book);
     }
 

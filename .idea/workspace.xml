@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb08dc00-6705-4b23-a8d7-f3f0f15e650c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/web/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/web/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/simple_mvc/WEB-INF/views/registration_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/simple_mvc/WEB-INF/views/registration_form.html" afterDir="false" />
-    </list>
+    <list default="true" id="cb08dc00-6705-4b23-a8d7-f3f0f15e650c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,6 +129,7 @@
       <workItem from="1611319128993" duration="57000" />
       <workItem from="1611426844689" duration="1632000" />
       <workItem from="1611428671836" duration="2559000" />
+      <workItem from="1611433590161" duration="4000" />
     </task>
     <servers />
   </component>
