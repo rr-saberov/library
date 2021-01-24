@@ -24,6 +24,10 @@ public class BookService {
             bookRepo.store(book);
     }
 
+    public boolean searchBookById(Integer bookIdToSearch) {
+        return bookRepo.searchItemById(bookIdToSearch);
+    }
+
     public boolean removeBookById(Integer bookIdToRemove) {
         return bookRepo.removeItemById(bookIdToRemove);
     }

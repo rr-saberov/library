@@ -29,6 +29,14 @@
         }
 
     </style>
+    <style>
+        #search{
+            position: absolute;
+            left: 90%;
+            top: 90%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 <body>
     <div id="root_container">
@@ -121,5 +129,9 @@
         </table>
     </div>
 
+
+    <div id="search" th:switch="${books}">
+        <p><a href="/books/search">Search</a></p>
+    </div>
 </body>
 </html>

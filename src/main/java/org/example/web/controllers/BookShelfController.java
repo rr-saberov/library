@@ -33,11 +33,15 @@ public class BookShelfController {
 
     @PostMapping("/save")
     public String saveBook(Book book) {
-        if (book.getTitle() != null || book.getSize() != null || book.getAuthor() != null) {
-            bookService.saveBook(book);
-        }
+        bookService.saveBook(book);
         logger.info("current repository size " + bookService.getAllBooks().size());
         return "redirect:/books/shelf";
+    }
+
+    @GetMapping("/shelf/search")
+    public String searchBook(Integer bookIdToSearch) {
+        bookService.searchBookById(bookIdToSearch);
+        return "redirect:/shelf/search";
     }
 
     @PostMapping("/remove")

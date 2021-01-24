@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search form</title>
+    <style>
+        #search_form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="search_form">
+        <form method="get" th:action="@{books/search}">
+            <table>
+                <tr>
+                    <td>
+                        <input type="search" placeholder="author" th:field="*{author}">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="book_title" th:field="*{title}">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="size (pages)" th:field="*{size}">
+                    </td>
+                    <td>
+                        <input type="button" placeholder="search">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

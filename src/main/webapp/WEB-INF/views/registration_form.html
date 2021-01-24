@@ -15,7 +15,7 @@
 
 <body>
 <div id="registration_form">
-    <form action="#" th:action="@{login/adduser}" th:object="${loginForm}" method="post">
+    <form action="#" th:action="@{adduser}" th:object="${loginForm}" method="post">
         <label for="username">Enter username</label>
         <input type="text" th:field="*{username}" id="username" placeholder="username">
         <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>

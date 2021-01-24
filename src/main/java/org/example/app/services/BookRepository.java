@@ -26,6 +26,15 @@ public class BookRepository implements ProjectRepository<Book>{
     }
 
     @Override
+    public boolean searchItemById(Integer bookIdToSearch) {
+        if (bookIdToSearch != null) {
+            for (Book book : retreiveAll())
+                return book.getId().equals(bookIdToSearch);
+        }
+        return false;
+    }
+
+    @Override
     public boolean removeItemById(Integer bookIdToRemove) {
         if (bookIdToRemove != null) {
             for (Book book : retreiveAll()) {
