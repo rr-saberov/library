@@ -41,7 +41,7 @@ public class BookShelfController {
     @GetMapping("/shelf/search")
     public String searchBook(Integer bookIdToSearch) {
         bookService.searchBookById(bookIdToSearch);
-        return "redirect:/shelf/search";
+        return "search_form";
     }
 
     @PostMapping("/remove")

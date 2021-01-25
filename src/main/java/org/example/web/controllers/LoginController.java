@@ -37,8 +37,8 @@ public class LoginController {
     }
 
     @PostMapping("adduser")
-    public String addUser(String name, String password) {
-        loginService.addUser(name, password);
+    public String addUser(LoginForm form) {
+        loginService.addUser(form.getUsername(), form.getPassword());
         return "redirect:/login";
     }
 
