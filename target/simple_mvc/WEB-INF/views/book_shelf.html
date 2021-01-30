@@ -131,7 +131,9 @@
 
 
     <div id="search" th:switch="${books}">
-        <p><a href="/books/search">Search</a></p>
+        <p><a th:href="@{/books/shelf/search}">Search</a></p>
     </div>
+
+
 </body>
 </html>

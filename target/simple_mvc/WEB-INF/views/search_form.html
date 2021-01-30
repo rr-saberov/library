@@ -14,25 +14,10 @@
 </head>
 <body>
 
-    <div id="search_form">
-        <form method="get" th:action="@{shelf/search}">
-            <table>
-                <tr>
-                    <td>
-                        <input type="search" placeholder="author" th:field="*{author}">
-                    </td>
-                    <td>
-                        <input type="text" placeholder="book_title" th:field="*{title}">
-                    </td>
-                    <td>
-                        <input type="text" placeholder="size (pages)" th:field="*{size}">
-                    </td>
-                    <td>
-                        <input type="button" placeholder="search">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-</body>
+<div id="search_form">
+    <form ui-jp="search" th:action="@{/shelf/search}" th:object="${myFormObject}" method="get">
+        Search by id: <input id="filter" type="text" th:field="*{id}" class="form-control input-sm w-auto inline m-r"/>
+        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>
+    </form>
+</div>
 </html>
