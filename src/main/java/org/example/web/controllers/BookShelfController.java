@@ -44,6 +44,24 @@ public class BookShelfController {
         return "search_form";
     }
 
+    @GetMapping("/shelf/searchBySize")
+    public String searchBookBySize(Integer bookSizeToSearch) {
+        bookService.searchBookBySize(bookSizeToSearch);
+        return "search_form";
+    }
+
+    @GetMapping("/shelf/searchByAuthor")
+    public String searchBookByAuthor(String bookAuthorToSearch) {
+        bookService.searchBookByAuthor(bookAuthorToSearch);
+        return "search_form";
+    }
+
+    @GetMapping("/shelf/searchByTitle")
+    public String searchBookByTitle(String bookTitleToSearch) {
+        bookService.searchBookByAuthor(bookTitleToSearch);
+        return "search_form";
+    }
+
     @PostMapping("/remove")
     public String removeBook(@RequestParam(value = "bookIdToRemove") Integer bookIdToRemove) {
         if (bookService.removeBookById(bookIdToRemove)) {

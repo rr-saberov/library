@@ -28,6 +28,18 @@ public class BookService {
         bookRepo.searchItemById(bookIdToSearch);
     }
 
+    public void searchBookBySize(Integer bookSizeToSearch) {
+        bookRepo.searchItemBySize(bookSizeToSearch);
+    }
+
+    public void searchBookByAuthor(String bookAuthorToSearch) {
+        bookRepo.searchItemByAuthor(bookAuthorToSearch);
+    }
+
+    public void searchBookByTitle(String bookTitleToSearch) {
+        bookRepo.searchItemByAuthor(bookTitleToSearch);
+    }
+
     public boolean removeBookById(Integer bookIdToRemove) {
         return bookRepo.removeItemById(bookIdToRemove);
     }

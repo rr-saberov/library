@@ -9,6 +9,12 @@ public interface ProjectRepository<T> {
 
     boolean searchItemById(Integer bookIdToSearch);
 
+    boolean searchItemBySize(Integer bookSizeToSearch);
+
+    boolean searchItemByAuthor(String bookAuthorToSearch);
+
+    boolean searchItemByTitle(String bookTitleToSearch);
+
     boolean removeItemById(Integer bookIdToRemove);
 
     boolean removeItemByAuthor(String bookAuthorToRemove);

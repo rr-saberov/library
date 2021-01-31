@@ -35,6 +35,33 @@ public class BookRepository implements ProjectRepository<Book>{
     }
 
     @Override
+    public boolean searchItemBySize(Integer bookSizeToSearch) {
+        if (bookSizeToSearch != null) {
+            for (Book book : retreiveAll())
+                return book.getSize().equals(bookSizeToSearch);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean searchItemByAuthor(String bookAuthorToSearch) {
+        if (bookAuthorToSearch != null) {
+            for (Book book : retreiveAll())
+                return book.getAuthor().equals(bookAuthorToSearch);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean searchItemByTitle(String bookTitleToSearch) {
+        if (bookTitleToSearch != null) {
+            for (Book book : retreiveAll())
+                return book.getTitle().equals(bookTitleToSearch);
+        }
+        return false;
+    }
+
+    @Override
     public boolean removeItemById(Integer bookIdToRemove) {
         if (bookIdToRemove != null) {
             for (Book book : retreiveAll()) {
