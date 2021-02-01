@@ -36,27 +36,30 @@ public class BookShelfController {
     }
 
     @GetMapping("/shelf/search")
-    public String searchBook(Model model,Integer bookIdToSearch) {
+    public String searchBook(Model model, Integer bookIdToSearch) {
         bookService.searchBookById(bookIdToSearch);
-        model.addAttribute("");
+        model.addAttribute("book", new Book());
         return "search_form";
     }
 
     @GetMapping("/shelf/searchBySize")
-    public String searchBookBySize(Integer bookSizeToSearch) {
+    public String searchBookBySize(Model model, Integer bookSizeToSearch) {
         bookService.searchBookBySize(bookSizeToSearch);
+        model.addAttribute("book", new Book());
         return "search_form";
     }
 
     @GetMapping("/shelf/searchByAuthor")
-    public String searchBookByAuthor(String bookAuthorToSearch) {
+    public String searchBookByAuthor(Model model, String bookAuthorToSearch) {
         bookService.searchBookByAuthor(bookAuthorToSearch);
+        model.addAttribute("book", new Book());
         return "search_form";
     }
 
     @GetMapping("/shelf/searchByTitle")
-    public String searchBookByTitle(String bookTitleToSearch) {
+    public String searchBookByTitle(Model model, String bookTitleToSearch) {
         bookService.searchBookByAuthor(bookTitleToSearch);
+        model.addAttribute("book", new Book());
         return "search_form";
     }
 

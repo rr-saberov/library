@@ -15,26 +15,27 @@
 <body>
 
 <div id="search_form">
-    <form ui-jp="search" th:action="@{/shelf/search}" th:object="${book}" method="get">
+    <form ui-jp="search" th:action="@{search}" th:object="${book}" method="get">
         Search by id: <input id="filter" type="text" th:field="*{id}" class="form-control input-sm w-auto inline m-r"/>
         <button class="md-btn md-fab m-b-sm indigo" name="search" value="search">
             <i class="material-icons md-24">&#xe8b6;</i></button>
     </form>
-
-<!--    <form ui-jp="search" th:action="@{/shelf/searchBySize}" th:object="${book}" method="get">-->
-<!--        Search by size: <input id="filterBySize" type="text" th:field="*{size}" class="form-control input-sm w-auto inline m-r"/>-->
-<!--        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>-->
-<!--    </form>-->
-<!--    <form ui-jp="search" th:action="@{/shelf/searchByAuthor}" th:object="${book}" method="get">-->
-<!--        Search by author: <input id="filterByAuthor" type="text" th:field="*{author}" class="form-control input-sm w-auto inline m-r"/>-->
-<!--        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>-->
-<!--    </form>-->
-
-<!--    <form ui-jp="search" th:action="@{/shelf/searchByTitle}" th:object="${book}" method="get">-->
-<!--        Search by id: <input id="filterByTitle" type="text" th:field="*{title}" class="form-control input-sm w-auto inline m-r"/>-->
-<!--        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>-->
-<!--    </form>-->
-
+    <br>
+    <form ui-jp="search" th:action="@{searchBySize}" th:object="${book}" method="get">
+        Search by size: <input id="filterBySize" type="text" th:field="*{size}" class="form-control input-sm w-auto inline m-r"/>
+        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>
+    </form>
+    <br>
+    <form ui-jp="search" th:action="@{searchByAuthor}" th:object="${book}" method="get">
+        Search by author: <input id="filterByAuthor" type="text" th:field="*{author}" class="form-control input-sm w-auto inline m-r"/>
+        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>
+    </form>
+    <br>
+    <form ui-jp="search" th:action="@{searchByTitle}" th:object="${book}" method="get">
+        Search by id: <input id="filterByTitle" type="text" th:field="*{title}" class="form-control input-sm w-auto inline m-r"/>
+        <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>
+    </form>
+    <br>
 </div>
 </body>
 </html>
