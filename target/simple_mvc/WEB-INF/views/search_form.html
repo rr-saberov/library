@@ -45,7 +45,7 @@
             <th>size</th>
         </tr>
 
-        <tr th:each="book : ${bookList}">
+        <tr th:each="book : ${filteredBooks}">
             <td th:text="${book.id}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.title}"></td>

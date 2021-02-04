@@ -40,19 +40,15 @@ public class BookShelfController {
 
     @GetMapping("/shelf/search")
     public String searchBook(Model model, Integer bookIdToSearch) {
-        List<Book> searchedBook = new ArrayList<>();
+        List<Book> filteredBooks = new ArrayList<>();
         bookService.searchBookById(bookIdToSearch);
-
-        model.addAttribute(bookService.getAllBooks());
         model.addAttribute("book", new Book());
-
-        List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
+        for (Book book : bookService.getAllBooks()) {
             if (book.getId().equals(bookIdToSearch)) {
-               searchedBook.add(book);
-               return searchedBook.toString();
+                filteredBooks.add(book);
             }
         }
+        model.addAttribute("filteredBooks", filteredBooks);
         return "search_form";
     }
 
