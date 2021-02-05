@@ -1,5 +1,7 @@
 package org.example.app.services;
 
+import org.example.web.dto.Book;
+
 import java.util.List;
 
 public interface ProjectRepository<T> {
@@ -11,7 +13,7 @@ public interface ProjectRepository<T> {
 
     boolean searchItemBySize(Integer bookSizeToSearch);
 
-    boolean searchItemByAuthor(String bookAuthorToSearch);
+    List<Book> searchItemByAuthor(String bookAuthorToSearch);
 
     boolean searchItemByTitle(String bookTitleToSearch);
 
