@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BookRepository implements ProjectRepository<Book>{
+public class BookRepository implements ProjectRepository<Book> {
 
     private final Logger logger = Logger.getLogger(BookRepository.class);
     private final List<Book> repo = new ArrayList<>();
@@ -44,12 +44,17 @@ public class BookRepository implements ProjectRepository<Book>{
     }
 
     @Override
-    public boolean searchItemByAuthor(String bookAuthorToSearch) {
-        if (bookAuthorToSearch != null) {
-            for (Book book : retreiveAll())
-                return book.getAuthor().equals(bookAuthorToSearch);
+    public List<Book> searchItemByAuthor(String bookAuthorToSearch) {
+        List<Book> foundBooks = new ArrayList<>();
+        if (bookAuthorToSearch != null && !bookAuthorToSearch.isEmpty()) {
+            for (Book book : retreiveAll()) {
+                if (book.getAuthor().equals(bookAuthorToSearch)) {
+                    foundBooks.add(book);
+                }
+            }
         }
-        return false;
+
+        return foundBooks;
     }
 
     @Override

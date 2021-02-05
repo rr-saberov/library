@@ -32,8 +32,8 @@ public class BookService {
         bookRepo.searchItemBySize(bookSizeToSearch);
     }
 
-    public void searchBookByAuthor(String bookAuthorToSearch) {
-        bookRepo.searchItemByAuthor(bookAuthorToSearch);
+    public List<Book> searchBookByAuthor(String bookAuthorToSearch) {
+        return bookRepo.searchItemByAuthor(bookAuthorToSearch);
     }
 
     public void searchBookByTitle(String bookTitleToSearch) {

@@ -6,7 +6,10 @@ import org.example.web.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +63,7 @@ public class BookShelfController {
         model.addAttribute("book", new Book());
 
         List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
+        for (Book book : books) {
             if (book.getSize().equals(bookSizeToSearch)) {
                 searchedBook.add(book);
                 return searchedBook.toString();
@@ -70,19 +73,10 @@ public class BookShelfController {
     }
 
     @GetMapping("/shelf/searchByAuthor")
-    public String searchBookByAuthor(Model model, String bookAuthorToSearch) {
-        List<Book> searchedBook = new ArrayList<>();
-        bookService.searchBookByAuthor(bookAuthorToSearch);
-        model.addAttribute(bookService.getAllBooks());
+    public String searchBookByAuthor(Model model, Book book) {
         model.addAttribute("book", new Book());
+        model.addAttribute("filteredBooks", bookService.searchBookByAuthor(book.getAuthor()));
 
-        List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
-            if (book.getAuthor().equals(bookAuthorToSearch)) {
-                searchedBook.add(book);
-                return searchedBook.toString();
-            }
-        }
         return "search_form";
     }
 
@@ -94,7 +88,7 @@ public class BookShelfController {
         model.addAttribute("book", new Book());
 
         List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
+        for (Book book : books) {
             if (book.getTitle().equals(bookTitleToSearch)) {
                 searchedBook.add(book);
                 return searchedBook.toString();
