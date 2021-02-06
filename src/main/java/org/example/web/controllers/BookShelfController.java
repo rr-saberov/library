@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping(value = "books")
 public class BookShelfController {
@@ -48,8 +45,7 @@ public class BookShelfController {
     @GetMapping("/shelf/searchBySize")
     public String searchBookBySize(Model model, Book book) {
         model.addAttribute("book", new Book());
-        if (book.getSize() != null)
-            model.addAttribute(bookService.searchBookBySize(book.getSize()));
+        model.addAttribute("filteredBooks", bookService.searchBookBySize(book.getSize()));
         return "search_form";
     }
 
