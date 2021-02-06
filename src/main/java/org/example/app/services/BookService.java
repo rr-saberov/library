@@ -24,20 +24,20 @@ public class BookService {
             bookRepo.store(book);
     }
 
-    public void searchBookById(Integer bookIdToSearch) {
-        bookRepo.searchItemById(bookIdToSearch);
+    public List<Book> searchBookById(Integer bookIdToSearch) {
+        return bookRepo.searchItemById(bookIdToSearch);
     }
 
-    public void searchBookBySize(Integer bookSizeToSearch) {
-        bookRepo.searchItemBySize(bookSizeToSearch);
+    public List<Book> searchBookBySize(Integer bookSizeToSearch) {
+        return bookRepo.searchItemBySize(bookSizeToSearch);
     }
 
-    public void searchBookByAuthor(String bookAuthorToSearch) {
-        bookRepo.searchItemByAuthor(bookAuthorToSearch);
+    public List<Book> searchBookByAuthor(String bookAuthorToSearch) {
+        return bookRepo.searchItemByAuthor(bookAuthorToSearch);
     }
 
-    public void searchBookByTitle(String bookTitleToSearch) {
-        bookRepo.searchItemByAuthor(bookTitleToSearch);
+    public List<Book> searchBookByTitle(String bookTitleToSearch) {
+        return bookRepo.searchItemByTitle(bookTitleToSearch);
     }
 
     public boolean removeBookById(Integer bookIdToRemove) {
@@ -55,6 +55,4 @@ public class BookService {
     public boolean removeBookByTitle(String bookTitleToRemove) {
         return bookRepo.removeItemByTitle(bookTitleToRemove);
     }
-
-
 }

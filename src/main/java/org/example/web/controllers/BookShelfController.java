@@ -39,67 +39,31 @@ public class BookShelfController {
     }
 
     @GetMapping("/shelf/search")
-    public String searchBook(Model model, Integer bookIdToSearch) {
-        List<Book> filteredBooks = new ArrayList<>();
-        bookService.searchBookById(bookIdToSearch);
+    public String searchBook(Model model, Book book) {
         model.addAttribute("book", new Book());
-        for (Book book : bookService.getAllBooks()) {
-            if (book.getId().equals(bookIdToSearch)) {
-                filteredBooks.add(book);
-            }
-        }
-        model.addAttribute("filteredBooks", filteredBooks);
+        model.addAttribute("filteredBooks", bookService.searchBookById(book.getId()));
         return "search_form";
     }
 
     @GetMapping("/shelf/searchBySize")
-    public String searchBookBySize(Model model, Integer bookSizeToSearch) {
-        List<Book> searchedBook = new ArrayList<>();
-        bookService.searchBookBySize(bookSizeToSearch);
-        model.addAttribute(bookService.getAllBooks());
+    public String searchBookBySize(Model model, Book book) {
         model.addAttribute("book", new Book());
-
-        List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
-            if (book.getSize().equals(bookSizeToSearch)) {
-                searchedBook.add(book);
-                return searchedBook.toString();
-            }
-        }
+        if (book.getSize() != null)
+            model.addAttribute(bookService.searchBookBySize(book.getSize()));
         return "search_form";
     }
 
     @GetMapping("/shelf/searchByAuthor")
-    public String searchBookByAuthor(Model model, String bookAuthorToSearch) {
-        List<Book> searchedBook = new ArrayList<>();
-        bookService.searchBookByAuthor(bookAuthorToSearch);
-        model.addAttribute(bookService.getAllBooks());
+    public String searchBookByAuthor(Model model, Book book) {
         model.addAttribute("book", new Book());
-
-        List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
-            if (book.getAuthor().equals(bookAuthorToSearch)) {
-                searchedBook.add(book);
-                return searchedBook.toString();
-            }
-        }
+        model.addAttribute("filteredBooks", bookService.searchBookByAuthor(book.getAuthor()));
         return "search_form";
     }
 
     @GetMapping("/shelf/searchByTitle")
-    public String searchBookByTitle(Model model, String bookTitleToSearch) {
-        List<Book> searchedBook = new ArrayList<>();
-        bookService.searchBookByTitle(bookTitleToSearch);
-        model.addAttribute(bookService.getAllBooks());
+    public String searchBookByTitle(Model model, Book book) {
         model.addAttribute("book", new Book());
-
-        List<Book> books = bookService.getAllBooks();
-        for(Book book : books) {
-            if (book.getTitle().equals(bookTitleToSearch)) {
-                searchedBook.add(book);
-                return searchedBook.toString();
-            }
-        }
+        model.addAttribute("filteredBooks",bookService.searchBookByTitle(book.getTitle()));
         return "search_form";
     }
 

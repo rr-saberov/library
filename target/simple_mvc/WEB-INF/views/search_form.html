@@ -32,7 +32,7 @@
     </form>
     <br>
     <form ui-jp="search" th:action="@{searchByTitle}" th:object="${book}" method="get">
-        Search by id: <input id="filterByTitle" type="text" th:field="*{title}" class="form-control input-sm w-auto inline m-r"/>
+        Search by title: <input id="filterByTitle" type="text" th:field="*{title}" class="form-control input-sm w-auto inline m-r"/>
         <button class="md-btn md-fab m-b-sm indigo" name="search" value="search"><i class="material-icons md-24">&#xe8b6;</i></button>
     </form>
     <br>

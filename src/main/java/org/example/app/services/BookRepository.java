@@ -26,39 +26,47 @@ public class BookRepository implements ProjectRepository<Book>{
     }
 
     @Override
-    public boolean searchItemById(Integer bookIdToSearch) {
+    public List<Book> searchItemById(Integer bookIdToSearch) {
+        List<Book> foundBooks = new ArrayList<>();
         if (bookIdToSearch != null) {
             for (Book book : retreiveAll())
-                return book.getId().equals(bookIdToSearch);
+                if (book.getId().equals(bookIdToSearch))
+                    foundBooks.add(book);
         }
-        return false;
+        return foundBooks;
     }
 
     @Override
-    public boolean searchItemBySize(Integer bookSizeToSearch) {
+    public List<Book> searchItemBySize(Integer bookSizeToSearch) {
+        List<Book> foundBooks = new ArrayList<>();
         if (bookSizeToSearch != null) {
             for (Book book : retreiveAll())
-                return book.getSize().equals(bookSizeToSearch);
+                if (book.getSize().equals(bookSizeToSearch))
+                    foundBooks.add(book);
         }
-        return false;
+        return foundBooks;
     }
 
     @Override
-    public boolean searchItemByAuthor(String bookAuthorToSearch) {
-        if (bookAuthorToSearch != null) {
+    public List<Book> searchItemByAuthor(String bookAuthorToSearch) {
+        List<Book> foundBooks = new ArrayList<>();
+        if (bookAuthorToSearch != null && !bookAuthorToSearch.isEmpty()) {
             for (Book book : retreiveAll())
-                return book.getAuthor().equals(bookAuthorToSearch);
+                if (book.getAuthor().equals(bookAuthorToSearch))
+                    foundBooks.add(book);
         }
-        return false;
+        return foundBooks;
     }
 
     @Override
-    public boolean searchItemByTitle(String bookTitleToSearch) {
-        if (bookTitleToSearch != null) {
+    public List<Book> searchItemByTitle(String bookTitleToSearch) {
+        List<Book> foundBooks = new ArrayList<>();
+        if (bookTitleToSearch != null && !bookTitleToSearch.isEmpty()) {
             for (Book book : retreiveAll())
-                return book.getTitle().equals(bookTitleToSearch);
+                if (book.getTitle().equals(bookTitleToSearch))
+                    foundBooks.add(book);
         }
-        return false;
+        return foundBooks;
     }
 
     @Override

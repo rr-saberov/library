@@ -1,5 +1,7 @@
 package org.example.app.services;
 
+import org.example.web.dto.Book;
+
 import java.util.List;
 
 public interface ProjectRepository<T> {
@@ -7,13 +9,13 @@ public interface ProjectRepository<T> {
 
     void store(T book);
 
-    boolean searchItemById(Integer bookIdToSearch);
+    List<Book> searchItemById(Integer bookIdToSearch);
 
-    boolean searchItemBySize(Integer bookSizeToSearch);
+    List<Book> searchItemBySize(Integer bookSizeToSearch);
 
-    boolean searchItemByAuthor(String bookAuthorToSearch);
+    List<Book> searchItemByAuthor(String bookAuthorToSearch);
 
-    boolean searchItemByTitle(String bookTitleToSearch);
+    List<Book> searchItemByTitle(String bookTitleToSearch);
 
     boolean removeItemById(Integer bookIdToRemove);
 
