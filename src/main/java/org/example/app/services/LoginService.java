@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Service
 public class LoginService {
+
     private Logger logger = Logger.getLogger(LoginService.class);
     private static Map<String, String> accounts = new HashMap<>();
 
