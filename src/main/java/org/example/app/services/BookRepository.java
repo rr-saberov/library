@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -46,17 +47,19 @@ public class BookRepository implements ProjectRepository<Book>, ApplicationConte
         parameterSource.addValue("author", book.getAuthor());
         parameterSource.addValue("title", book.getTitle());
         parameterSource.addValue("size", book.getSize());
-        jdbcTemplate.update("INSERT INTO books(author,title,size) VALUES(:author, :title, :size)", parameterSource);
+        jdbcTemplate.update("INSERT INTO books(author, title, size) VALUES(:author, :title, :size)", parameterSource);
         logger.info("store new book " + book);
     }
 
     @Override
     public List<Book> searchItemById(Integer bookIdToSearch) {
-        List<Book> foundBooks = new ArrayList<>();
+        List<Book> foundBooks = retrieveAll();
         if (bookIdToSearch != null) {
-            for (Book book : retrieveAll())
-                if (book.getId().equals(bookIdToSearch))
+            for (Book book : foundBooks) {
+                if (book.getId().equals(bookIdToSearch)) {
                     foundBooks.add(book);
+                }
+            }
         }
         return foundBooks;
     }
@@ -115,24 +118,18 @@ public class BookRepository implements ProjectRepository<Book>, ApplicationConte
     @Override
     public boolean removeItemByAuthor(String bookAuthorToRemove) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        for (Book book : retrieveAll()) {
-            if (book.getAuthor().equals(bookAuthorToRemove)) {
-                logger.info("remove book completed: " + book);
-                return true;
-            }
-        }
-        return false;
+        parameterSource.addValue("author", bookAuthorToRemove);
+        jdbcTemplate.update("DELETE FROM books WHERE author = :author", parameterSource);
+        logger.info("remove book completed");
+        return true;
     }
 
     @Override
     public boolean removeItemByTitle(String bookTitleToRemove) {
-        for (Book book : retrieveAll()) {
-            if (book.getTitle().equals(bookTitleToRemove)) {
-                logger.info("remove book completed: " + book);
-                return true;
-            }
-        }
-        return false;
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("title", bookTitleToRemove);
+        jdbcTemplate.update("DELETE FROM books WHERE title = :title", parameterSource);
+        return true;
     }
 
     @Override

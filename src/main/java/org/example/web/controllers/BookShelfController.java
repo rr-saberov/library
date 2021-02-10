@@ -1,12 +1,13 @@
 package org.example.web.controllers;
 
+import jdk.internal.loader.Resource;
 import org.apache.log4j.Logger;
-import org.example.app.exceptions.BookShelfLoginException;
-import org.example.app.exceptions.FileWriteException;
+import org.example.app.exceptions.FileUploadException;
 import org.example.app.services.BookService;
 import org.example.web.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -157,13 +158,18 @@ public class BookShelfController {
             }
         } else {
             logger.info("file upload fail");
-            throw new FileWriteException("file not found");
+            throw new FileUploadException("file not found");
         }
         return "redirect:/books/shelf";
     }
 
-    @ExceptionHandler(FileWriteException.class)
-    public String handlerError(Model model, FileWriteException exception) {
+//    @GetMapping("/uploadFile/{filename}")
+//    public ResponseEntity<Resource> downloadFile(@RequestParam MultipartFile file) {
+//
+//    }
+
+    @ExceptionHandler(FileUploadException.class)
+    public String handlerError(Model model, FileUploadException exception) {
         model.addAttribute("errorMessage", exception.getMessage());
         return "errors/500";
     }

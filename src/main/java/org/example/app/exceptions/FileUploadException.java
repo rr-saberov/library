@@ -1,10 +1,10 @@
 package org.example.app.exceptions;
 
-public class FileWriteException extends Exception {
+public class FileUploadException extends Exception {
 
     private final String message;
 
-    public FileWriteException(String message) {
+    public FileUploadException(String message) {
         this.message = message;
     }
 

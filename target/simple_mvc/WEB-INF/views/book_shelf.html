@@ -45,15 +45,15 @@
                 <tr>
                     <td>
                         <input type="text" placeholder="author" th:field="*{author}">
-<!--                        <p th:if="${#fields.hasErrors('author')}">Author name must be at least 4 characters</p>-->
+                        <p th:if="${#fields.hasErrors('author')}">Author name must be at least 4 characters</p>
                     </td>
                     <td>
                         <input type="text" placeholder="book_title" th:field="*{title}">
-<!--                        <p th:if="${$fields.hasErrors('title')}">Title must be at least 4 characters</p>-->
+                        <p th:if="${#fields.hasErrors('title')}">Title must be at least 4 characters</p>
                     </td>
                     <td>
                         <input type="text" placeholder="size (pages)" th:field="*{size}">
-<!--                        <p th:if="${#fields.hasErrors('size')}" th:errors="*{size}">field value must be digit and less than 4 signs</p>-->
+                        <p th:if="${#fields.hasErrors('size')}" th:errors="*{size}">field value must be digit and less than 4 signs</p>
                     </td>
                     <td>
                         <input type="submit" value="save">
@@ -94,7 +94,7 @@
             </table>
         </form>
 
-        <form method="post" th:action="@{/books/removeByAuthor}" th:object="bookAuthorToRemove">
+        <form method="post" th:action="@{/books/removeByAuthor}" th:object="${bookAuthorToRemove}">
             <table>
                 <tr>
                     <td>
@@ -110,7 +110,7 @@
             </table>
         </form>
 
-        <form method="post" th:action="@{/books/removeByTitle}" th:object="bookTitleToRemove">
+        <form method="post" th:action="@{/books/removeByTitle}" th:object="${bookTitleToRemove}">
             <table>
                 <tr>
                     <td>
