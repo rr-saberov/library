@@ -1,13 +1,11 @@
 package org.example.web.controllers;
 
-import jdk.internal.loader.Resource;
 import org.apache.log4j.Logger;
 import org.example.app.exceptions.FileUploadException;
 import org.example.app.services.BookService;
 import org.example.web.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +16,7 @@ import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+
 
 @Controller
 @Scope("singleton")
@@ -134,43 +133,5 @@ public class BookShelfController {
             bookService.removeBookByTitle(bookTitleToRemove.getTitle());
             return "redirect:/books/shelf";
         }
-    }
-
-    @PostMapping("/uploadFile")
-    public String uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
-        String name = file.getOriginalFilename();
-        byte[] bytes = file.getBytes();
-
-        //create dir
-        String rootPath = System.getProperty("catalina.home");
-        File dir = new File(rootPath + File.separator + "external_uploads");
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        //create file
-        File serverFile = new File(dir.getAbsoluteFile() + File.separator + name);
-
-        if (!file.isEmpty()) {
-            try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
-                stream.write(bytes);
-                logger.info("new file saved at: " + serverFile.getAbsolutePath());
-            }
-        } else {
-            logger.info("file upload fail");
-            throw new FileUploadException("file not found");
-        }
-        return "redirect:/books/shelf";
-    }
-
-//    @GetMapping("/uploadFile/{filename}")
-//    public ResponseEntity<Resource> downloadFile(@RequestParam MultipartFile file) {
-//
-//    }
-
-    @ExceptionHandler(FileUploadException.class)
-    public String handlerError(Model model, FileUploadException exception) {
-        model.addAttribute("errorMessage", exception.getMessage());
-        return "errors/500";
     }
 }
