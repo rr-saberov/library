@@ -45,7 +45,7 @@ public class FilesController {
     }
 
     @GetMapping("/books/files/{file_name}")
-    public void DownloadFile(@PathVariable("file_name") String fileName, HttpServletResponse response) {
+    public void DownloadFile(@RequestParam("file_name") String fileName, HttpServletResponse response) {
         try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(new File(fileName)))) {
             IOUtils.copy(stream, response.getOutputStream());
             response.flushBuffer();
