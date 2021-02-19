@@ -139,14 +139,24 @@
             </table>
         </form>
 
-        <form id="files" th:action="@{/books/files/{$file_name}}" enctype="multipart/form-data">
-        <table>
-            <tr th:each="file : ${file_name}">
-                <td th:text="${file_name}">
-                <td><a th:href="${/books/files/{file_name}}">link</a></td>
+        <table id="customerTable" class="table">
+            <tbody>
+            <tr th:each="file, rowStat: ${files}">
+                <td th:text="${rowStat.count}">1</td>
+                <td th:text="${file.filename}">File-Name</td>
+                <td><a th:href="${file.url}">Link</a></td>
             </tr>
+            </tbody>
         </table>
-        </form>
+
+
+<!--            <table>-->
+<!--                <tr th:each="file : ${file_name}">-->
+<!--                    <td th:text="${file_name}">-->
+<!--                    <td><a th:href="${/books/files/{file_name}}">link</a></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+
 
 
 <!--        <form id="files1" th:action="@{/books/files/{$file_name}}" enctype="multipart/form-data">-->
