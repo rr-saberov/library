@@ -140,12 +140,11 @@
         </form>
 
         <table>
-            <tr th:each="file : ${file_name}">
-                <td th:text="${file_name}">
-                <td><a th:href="${/books/files/{file_name}}">link</a></td>
+            <tr th:each="file : ${fileList}">
+                <td th:text="${fileList}">
+                <td><a th:href="@{/books/files/${file_name}}">Download</a></td>
             </tr>
         </table>
-
 
         <table id="books">
             <tr>

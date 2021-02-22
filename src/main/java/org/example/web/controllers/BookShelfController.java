@@ -26,7 +26,7 @@ import java.util.List;
 public class BookShelfController {
     private Logger logger = Logger.getLogger(BookShelfController.class);
     private BookService bookService;
-    private List<File> fileList = new ArrayList<>();
+    private List<String> fileList = new ArrayList<>();
 
     @Autowired
     public BookShelfController(BookService bookService) {
@@ -139,8 +139,6 @@ public class BookShelfController {
         }
     }
 
-
-
     @PostMapping("/uploadFile")
     public String uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
         String name = file.getOriginalFilename();
@@ -159,7 +157,7 @@ public class BookShelfController {
         if (!file.isEmpty()) {
             try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
                 stream.write(bytes);
-                fileList.add(serverFile);
+                fileList.add(serverFile.getName());
                 logger.info("new file saved at: " + serverFile.getAbsolutePath());
             }
         } else {

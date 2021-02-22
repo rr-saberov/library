@@ -139,38 +139,12 @@
             </table>
         </form>
 
-        <table id="customerTable" class="table">
-            <tbody>
-            <tr th:each="file, rowStat: ${files}">
-                <td th:text="${rowStat.count}">1</td>
-                <td th:text="${file.filename}">File-Name</td>
-                <td><a th:href="${file.url}">Link</a></td>
+        <table>
+            <tr th:each="file : ${fileList}">
+                <td th:text="${fileList}">
+                <td><a th:href="@{/books/files/${file_name}}">Download</a></td>
             </tr>
-            </tbody>
         </table>
-
-
-<!--            <table>-->
-<!--                <tr th:each="file : ${file_name}">-->
-<!--                    <td th:text="${file_name}">-->
-<!--                    <td><a th:href="${/books/files/{file_name}}">link</a></td>-->
-<!--                </tr>-->
-<!--            </table>-->
-
-
-
-<!--        <form id="files1" th:action="@{/books/files/{$file_name}}" enctype="multipart/form-data">-->
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <td>-->
-<!--                        <input type="text" name="file_name"/>-->
-<!--                    </td>-->
-<!--                    <td>-->
-<!--                        <input type="submit" value="search"/>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--            </table>-->
-<!--        </form>-->
 
         <table id="books">
             <tr>
