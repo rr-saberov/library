@@ -142,7 +142,8 @@
         <table>
             <tr th:each="file : ${fileList}">
                 <td th:text="${fileList}">
-                <td><a th:href="@{/books/files/${file_name}}">Download</a></td>
+                <td><a th:href="@{/books/files/{file_name}/}">Download</a></td>
+<!--                <a th:href="@{/order/{id}/details(id=3,action='show_all')}">-->
             </tr>
         </table>
 

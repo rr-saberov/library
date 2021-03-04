@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class BookRepository implements ProjectRepository<Book>, ApplicationContextAware {
@@ -52,48 +53,26 @@ public class BookRepository implements ProjectRepository<Book>, ApplicationConte
 
     @Override
     public List<Book> searchItemById(Integer bookIdToSearch) {
-        List<Book> foundBooks = retrieveAll();
-        if (bookIdToSearch != null) {
-            for (Book book : foundBooks) {
-                if (book.getId().equals(bookIdToSearch)) {
-                    foundBooks.add(book);
-                }
-            }
-        }
-        return foundBooks;
+        return retrieveAll().stream().filter(book -> book.getId().equals(bookIdToSearch))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> searchItemBySize(Integer bookSizeToSearch) {
-        List<Book> foundBooks = new ArrayList<>();
-        if (bookSizeToSearch != null) {
-            for (Book book : retrieveAll())
-                if (book.getSize().equals(bookSizeToSearch))
-                    foundBooks.add(book);
-        }
-        return foundBooks;
+        return retrieveAll().stream().filter(book -> book.getSize().equals(bookSizeToSearch))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> searchItemByAuthor(String bookAuthorToSearch) {
-        List<Book> foundBooks = new ArrayList<>();
-        if (bookAuthorToSearch != null && !bookAuthorToSearch.isEmpty()) {
-            for (Book book : retrieveAll())
-                if (book.getAuthor().equals(bookAuthorToSearch))
-                    foundBooks.add(book);
-        }
-        return foundBooks;
+        return retrieveAll().stream().filter(book -> book.getAuthor().equals(bookAuthorToSearch))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Book> searchItemByTitle(String bookTitleToSearch) {
-        List<Book> foundBooks = new ArrayList<>();
-        if (bookTitleToSearch != null && !bookTitleToSearch.isEmpty()) {
-            for (Book book : retrieveAll())
-                if (book.getTitle().equals(bookTitleToSearch))
-                    foundBooks.add(book);
-        }
-        return foundBooks;
+        return retrieveAll().stream().filter(book -> book.getTitle().equals(bookTitleToSearch))
+                .collect(Collectors.toList());
     }
 
     @Override

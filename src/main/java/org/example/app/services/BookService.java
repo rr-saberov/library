@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class BookService {
+
     private final Logger logger = Logger.getLogger(BookService.class);
     private final ProjectRepository<Book> bookRepo;
 
